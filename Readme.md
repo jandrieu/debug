@@ -51,6 +51,16 @@ setInterval(function(){
 
   ![debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png)
 
+ **Note**: As a result, spaces and commas are **not** valid characters in a namespace. For example, the following will not create a debug instance for the namespace "my module". It will create a debug instance with the namespaces "my" and "module" enabled. 
+ ```js
+ var debug = require('debug')('my module');  // creates two namespaces, not one
+ ```
+ This is also true for debug.enable(namespace);
+ ```js
+ var Debug = require('debug');
+ Debug.enable('my module'); // enables two different namespaces "my" and "module"
+ ```
+ 
 #### Windows note
 
  On Windows the environment variable is set using the `set` command.
